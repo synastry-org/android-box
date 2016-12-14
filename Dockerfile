@@ -2,8 +2,8 @@ FROM centos
 
 MAINTAINER takke <takke30@gmail.com>
 
-ENV GRADLE_VERSION gradle-2.10
-ENV ANT_VERSION apache-ant-1.9.7  
+ENV GRADLE_VERSION gradle-2.14.1
+ENV ANT_VERSION apache-ant-1.9.7
 ENV JAVA_VERSION java-1.8.0-openjdk
 
 # Epel
@@ -33,14 +33,16 @@ RUN yum -y install libXrender.i686
 # Install Android SDK
 RUN cd /usr/local/ && curl -L -O http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && tar xf android-sdk_r24.4.1-linux.tgz
 
+RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/platform-25_r02.zip && unzip -o platform-25_r02.zip
+
 # Install Android tools
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter tools 
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter platform-tools 
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter build-tools-24.0.0 
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter android-24 
-# RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter android-19 
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter extra 
-RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter sys-img-armeabi-v7a-android-19 
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter tools
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter platform-tools
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter build-tools-25.0.1
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter android-25
+# RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter android-19
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter extra
+RUN echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force -a --filter sys-img-armeabi-v7a-android-19
 
 
 # Install Android NDK
@@ -71,9 +73,9 @@ ENV PATH $PATH:$GRADLE_HOME/bin
 
 # Clean up
 RUN rm -rf /usr/local/android-sdk_r24.4.1-linux.tgz
+RUN rm -rf /usr/local/platform-25_r02.zip
 RUN rm -rf /usr/local/android-ndk-r9b-linux-x86_64.tar.bz2
 RUN rm -rf /usr/local/apache-ant-1.9.6-bin.tar.gz
 RUN rm -rf /usr/local/apache-maven-3.1.1-bin.tar.gz
 RUN rm -rf /usr/local/$GRADLE_VERSION-all.zip
 RUN yum clean all
-
