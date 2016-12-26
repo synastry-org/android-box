@@ -1,6 +1,6 @@
 FROM centos
 
-MAINTAINER takke <takke30@gmail.com>
+MAINTAINER astromatch <astromatch.ti@gmail.com>
 
 ENV GRADLE_VERSION gradle-2.14.1
 ENV ANT_VERSION apache-ant-1.9.7
