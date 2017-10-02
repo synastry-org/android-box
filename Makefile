@@ -1,4 +1,4 @@
-TAG := astromatch/android-box
+TAG := synastry/android-box
 
 build:
 	clear

@@ -1,15 +1,11 @@
-Android box
+Android Box
 ===========
 
-Android development environment for wercker 
+Android development environment 
 
  * OpenJDK 8
- * Android SDK r24.4.1
- * Android NDK r9b
- * Ant 1.9.6
- * Maven 3.1.1
- * Gradle 2.10
- * Android Build Tools 25.0.1
+ * Android SDK 26
+ * Android Build Tools 26.0.1
 
 ### Build
 
