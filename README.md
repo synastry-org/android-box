@@ -3,9 +3,9 @@ Android Box
 
 Android development environment 
 
- * OpenJDK 8
+ * JDK 8
  * Android SDK 26
- * Android Build Tools 26.0.1
+ * Android Build Tools 26.0.2
 
 ### Build
 
@@ -14,4 +14,3 @@ Android development environment
 ### Run
 
 `make run`
-
