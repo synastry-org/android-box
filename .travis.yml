@@ -1,0 +1,12 @@
+language: bash
+services: docker
+
+install:
+  - git clone https://github.com/docker-library/official-images.git ~/official-images
+
+script:
+  - docker build -t synastry/android-box:latest .
+  - ~/official-images/test/run.sh synastry/android-box:latest
+
+after_script:
+  - docker images
